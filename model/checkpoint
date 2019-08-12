@@ -1,0 +1,2 @@
+model_checkpoint_path: "speaker_2.hdf5"
+all_model_checkpoint_paths: "speaker_2.hdf5"

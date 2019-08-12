@@ -1,0 +1,9 @@
+./dataset/speech_speaker1/JA009_1.wav
+./dataset/speech_speaker1/JA009_2.wav
+./dataset/speech_speaker1/JA009_3.wav
+./dataset/speech_speaker1/JA009_4.wav
+./dataset/speech_speaker1/JA009_5.wav
+./dataset/speech_speaker1/JA009_6.wav
+./dataset/speech_speaker1/JA009_7.wav
+./dataset/speech_speaker1/JA009_8.wav
+./dataset/speech_speaker1/JA009_9.wav

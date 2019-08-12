@@ -1,0 +1,5 @@
+./dataset/adaptation_data/speaker1/251-136532-0000.flac
+./dataset/adaptation_data/speaker1/251-136532-0001.flac
+./dataset/adaptation_data/speaker1/251-136532-0002.flac
+./dataset/adaptation_data/speaker1/251-136532-0003.flac
+./dataset/adaptation_data/speaker1/251-136532-0004.flac

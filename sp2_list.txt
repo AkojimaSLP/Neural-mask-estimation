@@ -1,0 +1,6 @@
+./dataset/adaptation_data/speaker2/2412-153954-0002.flac
+./dataset/adaptation_data/speaker2/2412-153954-0003.flac
+./dataset/adaptation_data/speaker2/2412-153954-0004.flac
+./dataset/adaptation_data/speaker2/2412-153954-0005.flac
+./dataset/adaptation_data/speaker2/2412-153954-0006.flac
+./dataset/adaptation_data/speaker2/2412-153954-0007.flac
