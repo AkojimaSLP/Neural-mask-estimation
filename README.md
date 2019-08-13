@@ -24,13 +24,13 @@
 	- Perform mask estimation and design MVDR beamformer and you can get enhanced speech
 	- Please put multi channel data ./dataset/data_for_beamforming/* for beamforming
 
-speaker-aware mask estimating:
+speaker-aware mask estimating
 
-	1: Please run adapt.py
-		- Please prepare target speaker list and non target speaker list (e.g., sp1_list.txt, sp2_list.txt)
+1: Please run adapt.py
+	- Please prepare target speaker list and non target speaker list (e.g., sp1_list.txt, sp2_list.txt)
 
-	2. Please run speaker_aware_mask_predict.py
-		- you can compare mask results before/after adaptation 
+2. Please run speaker_aware_mask_predict.py
+	- you can compare mask results before/after adaptation 
 		
 # Reference:
 
