@@ -28,8 +28,8 @@ class Generate_random_noise:
         else:            
             noise_data = sf.read(selected_noise_path)[0]           
             if len(np.shape(noise_data)) >= 2:
-                noise_data = noise_data[:, 0]                                                        
-            noise_data = np.repeat(noise_data, 30) # adhock-number
+                noise_data = noise_data[:, 0]                          
+            noise_data = np.tile(noise_data, 30) # adhock-number
             noise_data = noise_data[0:speech_length]
         return noise_data
                         
@@ -42,9 +42,9 @@ class SNR_adjusting:
         return speech_data * speech_rate
     
     def add_speech_to_noise(self, target_SNR):        
-        speech_data = self.normalize_amplitude(self.speech_data, 0.65)
-        noise_data = self.normalize_amplitude(self.noise_data, 0.65)
-        speech_power_coeficient = self.get_speech_rate(speech_data, noise_data, target_SNR)        
+        speech_data = self.normalize_amplitude(self.speech_data, 0.9)
+        noise_data = self.normalize_amplitude(self.noise_data, 0.1)
+        speech_power_coeficient = self.get_speech_rate(speech_data, noise_data, target_SNR)   
         return (self.adjust_SNR(speech_power_coeficient, speech_data), noise_data)
     
     def normalize_amplitude(self, speech_data, max_amplitude):
@@ -71,10 +71,11 @@ class RIR_convolve:
     def __init__(self, sampling_frequency)    :
         self.sampling_frequency = sampling_frequency
     
-    def get_reverbant_speech(self, speech):
-        meters = np.random.randint(5, 7, 1)[0]
-        distance = np.random.randint(3, 5, 1)[0]
+    def get_reverbant_speech(self, speech, noise):
+        meters = np.random.randint(6, 10, 1)[0]
+        distance = np.random.randint(2, 5, 1)[0]        
         rt = (0.5 - 0.01) * np.random.rand() + 0.01
+        # speech
         room = pra.ShoeBox([meters, meters], fs=self.sampling_frequency, t0=0., absorption=rt, max_order=12)
         R = pra.circular_2D_array(center=[distance, distance], M=1, phi0=0, radius=0.07)
         room.add_microphone_array(pra.MicrophoneArray(R, room.fs))
@@ -83,4 +84,14 @@ class RIR_convolve:
         ori_length = len(speech)
         speech = room.mic_array.signals.T
         speech = speech[0:ori_length, 0]                
-        return speech        
+        # noise
+        distance2 = np.random.randint(2, 5, 1)[0]        
+        room = pra.ShoeBox([meters, meters], fs=self.sampling_frequency, t0=0., absorption=rt, max_order=12)
+        R = pra.circular_2D_array(center=[distance2, distance2], M=1, phi0=0, radius=0.07)
+        room.add_microphone_array(pra.MicrophoneArray(R, room.fs))
+        room.add_source([distance2-0.5, distance2-0.5], signal=noise)
+        room.simulate()
+        ori_length = len(noise)
+        noise = room.mic_array.signals.T
+        noise = noise[0:ori_length, 0]                        
+        return speech, noise
