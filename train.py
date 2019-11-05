@@ -157,7 +157,7 @@ for i in range(0, EPOCHS):
                 if RIR_CONVOLVE_CHANCE_RATE != 0:
                     # convolve RIR
                     if np.random.randint(0, 1 // RIR_CONVOLVE_CHANCE_RATE, 1)[0] == 1:
-                        speech = reverbarent_generator.get_reverbant_speech(speech) 
+                        speech, noise = reverbarent_generator.get_reverbant_speech(speech, noise) 
                         
                 snr_adjuster = augment.SNR_adjusting(speech, noise)                        
                 if SNR_index == 0:            
