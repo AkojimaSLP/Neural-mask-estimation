@@ -5,7 +5,7 @@
 - LSTM-based Neural Mask Estimation for designing MVDR [1, 4]
 - on-the-fly data augmentation
 - pre-trained model	
-- peaker-Aware mask training supported [2]
+- speaker-Aware mask training supported [2]
 - SNR-based reference mic selection for MVDR [1, 4]
 - small scale sample training data 
 	- You can perform experiment using any data by replacing the data
