@@ -38,7 +38,7 @@ NUMBER_OF_SKIP_FRAME = 0
 #==========================================
 # NEURAL MASL ESTIMATOR TRAINNING PARAMERTERS
 #==========================================
-EPOCHS = 1000
+EPOCHS = 1
 NUMBER_OF_UTTERANCE = 1 #15
 TRUNCATE_GRAD = 7
 LR = 0.001 
@@ -217,16 +217,20 @@ for i in range(0, EPOCHS):
                     utterance_count = utterance_count + 1                    
                 if utterance_count == NUMBER_OF_UTTERANCE:
                     break          
-
+        
         train_features = np.array(feature_stack)
         train_label_sp = np.array(label_stack_sp)
         train_label_n = np.array(label_stack_n)
+
+        
         if np.shape(train_features)[0] != 0:
             shuffle_index = random.sample(range(0, np.shape(train_features)[0]), np.shape(train_features)[0])
             history = mask_estimator.train_on_batch(x=train_features[shuffle_index, :, :], 
                       y=[train_label_sp[shuffle_index, :], train_label_n[shuffle_index, :]])
             print('train_loss:', history)
             print('epoch:', i)
+        else:
+            break
         
         # reset 
         feature_stack = []
