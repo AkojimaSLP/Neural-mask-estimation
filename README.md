@@ -53,13 +53,17 @@ speaker-aware mask estimating
 ![model](https://user-images.githubusercontent.com/41845296/62979656-5b090880-be5f-11e9-9e4f-fa4e4be17560.png)
 
 # Requirement:
+python                    3.6.7+
 
-numpy	1.14.3
+numpy	                  1.14.3
 soundfile                 0.9.0
 pyroomacoustics           0.1.21
 librosa                   0.6.2
 tensorflow                1.9.0
 scipy                     1.2.0
+cython                    0.25.2
+matplotlib                3.6.7
+
 
     
     
