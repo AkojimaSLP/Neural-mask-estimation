@@ -16,19 +16,27 @@
 
 1. Please run generate_validate_data.py
 	- Please put data(noise and clean speech) ./dataset/validate/*
+	- You will get validation_features/speech_mask.npy, validation_features/noise_mask.npy and validation_features/val_spec.npy
 
 2. Please run train.py
 	- Please put data(noise and clean speech) ./dataset/train/*
+	- You will get model/neaural_mask_estimator{}.hdf5
+		・{} indicates the number of times of epoch	
 
 3. Please run predict.py
 	- Perform mask estimation and design MVDR beamformer and you can get enhanced speech
 	- Please put multi channel data ./dataset/data_for_beamforming/* for beamforming
+	- You will get result in ./result/*
+		・ enhencement_all_channels.wav is result without channel selection
+		-・enhacement_snr_select.wav is result with channel selection
+	
 
 speaker-aware mask estimating
 
 1: Please run adapt.py
 	- Please prepare target speaker list and non target speaker list (e.g., sp1_list.txt, sp2_list.txt)
-
+	- you will get speaker-aware model ./model/speaker_2.hdf5	
+	
 2. Please run speaker_aware_mask_predict.py
 	- you can compare mask results before/after adaptation 
 		
